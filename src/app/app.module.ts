@@ -27,7 +27,8 @@ import { UserComponent } from './components/users/user/user.component';
 import { UserService } from './services/user.service';
 
 const routes: Routes = [
-    { path: '', component: HomePageComponent }
+    { path: 'caca', component: UserComponent },
+    { path: 'shit', component: UsersListComponent }
 ];
 
 @NgModule({
