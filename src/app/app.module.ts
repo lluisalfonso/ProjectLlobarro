@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {environment} from '../environments/environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // components
 import { UsersComponent } from './components/users/users.component';
@@ -29,9 +30,9 @@ import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.co
 import { PrivatepageComponent } from './components/privatepage/privatepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
 
-
 // services
 import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
     { path: '', component: HomepageComponent },
@@ -62,10 +63,12 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireAuthModule
   ],
   providers: [
-      UserService
+      UserService,
+      AuthService
   ],
   bootstrap: [AppComponent]
 })
