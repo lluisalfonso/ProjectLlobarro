@@ -8,28 +8,26 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public isLogin : boolean;
-  public username : string;
-  public email : string;
+  public isLogin: boolean;
+  public username: string;
+  public email: string;
 
   constructor(
-    public authService : AuthService,
-
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
-    this.authService.getAuth().subscribe(autho=>{
-      if(autho){
-        this.isLogin=true;
+    this.authService.getAuth().subscribe(autho => {
+      if (autho) {
+        this.isLogin = true;
         this.email = autho.email;
-        this.username = autho.displayName
-      }else{
-        this.isLogin=false;
+        this.username = autho.displayName;
+      } else {
+        this.isLogin = false;
       }
-
-    })
+    });
   }
-  onClickLogout(){
+  onClickLogout() {
     this.authService.logout();
   }
 }
