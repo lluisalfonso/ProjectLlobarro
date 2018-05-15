@@ -23,6 +23,7 @@ export class RegisterpageComponent implements OnInit {
   public telefon: number;
   public codiPostal: number;
 
+  constructor(
       public authService: AuthService,
       private userService: UserService,
       public toastr: ToastrService

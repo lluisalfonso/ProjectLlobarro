@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
         this.isLogin = true;
         this.email = autho.email;
         this.username = autho.displayName;
+
         this.id = autho.providerId;
         
       }else{
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit {
     })
     });
   }
+  onClickLogout() {
     this.authService.logout();
   }
 }

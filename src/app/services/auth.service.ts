@@ -12,7 +12,6 @@ export class AuthService {
 
   constructor(
       public afAuth: AngularFireAuth
-  ) { }
   ) {
       this.afAuth.authState.subscribe((auth) => {
           this.authState = auth;
@@ -25,7 +24,6 @@ export class AuthService {
           .then(
           userData => resolve(userData),
           err => reject (err));
-    })
     });
   }
 

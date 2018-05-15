@@ -37,7 +37,6 @@ export class UserComponent implements OnInit {
 
   onSubmit(registerForm: NgForm) {
       if (registerForm.value.$key == null) {
-          this.userService.insertUser(registerForm.value);
           this.userService.insertUser(this.id, this.nom, this.cognoms, this.usuari, this.naixement, this.pais, this.telefon, this.codiPostal);
       } else {
           this.userService.updateUser(registerForm.value);
