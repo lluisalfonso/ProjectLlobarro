@@ -8,9 +8,15 @@ import 'rxjs/add/operator/map';
 })
 export class AuthService {
 
+    authState: any = null;
+
   constructor(
       public afAuth: AngularFireAuth
-  ) { }
+  ) {
+      this.afAuth.authState.subscribe((auth) => {
+          this.authState = auth;
+      });
+  }
 
   registerUser(email: string, pass: string) {
     return new Promise((resolve, reject) => {
@@ -18,7 +24,7 @@ export class AuthService {
           .then(
           userData => resolve(userData),
           err => reject (err));
-    })
+    });
   }
 
   loginEmail(email: string, pass: string) {
@@ -36,5 +42,13 @@ export class AuthService {
 
   logout() {
     return this.afAuth.auth.signOut();
+  }
+
+    get authenticated(): boolean {
+        return this.authState !== null;
+    }
+
+  currentUserId(): string {
+      return this.authenticated ? this.authState.uid : '';
   }
 }

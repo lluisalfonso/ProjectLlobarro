@@ -13,26 +13,26 @@ export class NavbarComponent implements OnInit {
   public email: string;
   public id: string;
 
-  constructor(
-    public authService : AuthService,
 
+  constructor(
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
-    this.authService.getAuth().subscribe(autho=>{
-      if(autho){
-        this.isLogin=true;
+    this.authService.getAuth().subscribe(autho => {
+      if (autho) {
+        this.isLogin = true;
         this.email = autho.email;
         this.username = autho.displayName;
+
         this.id = autho.providerId;
         
       }else{
         this.isLogin=false; 
       }
-
-    })
+    });
   }
-  onClickLogout(){
+  onClickLogout() {
     this.authService.logout();
   }
 }
