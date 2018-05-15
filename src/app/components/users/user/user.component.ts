@@ -15,6 +15,17 @@ import {User} from '../../../models/user';
 })
 export class UserComponent implements OnInit {
 
+    public email: string;
+    public password: string;
+    public id: string;
+    public nom: string;
+    public cognoms: string;
+    public usuari: string;
+    public naixement: string;
+    public pais: string;
+    public telefon: number;
+    public codiPostal: number;
+
   constructor(private userService: UserService,
               private toastr: ToastrService
   ) { }
@@ -27,6 +38,7 @@ export class UserComponent implements OnInit {
   onSubmit(registerForm: NgForm) {
       if (registerForm.value.$key == null) {
           this.userService.insertUser(registerForm.value);
+          this.userService.insertUser(this.id, this.nom, this.cognoms, this.usuari, this.naixement, this.pais, this.telefon, this.codiPostal);
       } else {
           this.userService.updateUser(registerForm.value);
       }
