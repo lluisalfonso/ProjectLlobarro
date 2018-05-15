@@ -34,11 +34,13 @@ import { RegisterpageComponent } from './components/registerpage/registerpage.co
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
+import {AuthGuard} from './guards/auth.guard';
+
 const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
-    { path: 'private', component: PrivatepageComponent },
+    { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
     { path: '**', component: NotfoundpageComponent }
 
 ];
@@ -68,7 +70,8 @@ const routes: Routes = [
   ],
   providers: [
       UserService,
-      AuthService
+      AuthService,
+      AuthGuard
   ],
   bootstrap: [AppComponent]
 })
