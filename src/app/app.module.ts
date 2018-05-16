@@ -29,6 +29,7 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { PrivatepageComponent } from './components/privatepage/privatepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
+import { TermespageComponent } from './components/termespage/termespage.component';
 
 // services
 import { UserService } from './services/user.service';
@@ -36,13 +37,14 @@ import { AuthService } from './services/auth.service';
 
 import {AuthGuard} from './guards/auth.guard';
 
+
 const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
-    { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
+    { path: 'private', component: PrivatepageComponent , canActivate : [AuthGuard]},
+    { path: 'termes-i-condicions', component: TermespageComponent },
     { path: '**', component: NotfoundpageComponent }
-
 ];
 
 @NgModule({
@@ -56,7 +58,8 @@ const routes: Routes = [
     LoginpageComponent,
     NotfoundpageComponent,
     PrivatepageComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    TermespageComponent
   ],
   imports: [
     BrowserModule,

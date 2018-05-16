@@ -41,6 +41,7 @@ export class RegisterpageComponent implements OnInit {
         this.toastr.success('Operació realitzada correctament', 'Registre Usuari');
       console.log(res);
       }).catch((err) => {
+        this.toastr.error('Operació no realitzada', 'Registre Usuari');
         console.log(err);
       });
   }
