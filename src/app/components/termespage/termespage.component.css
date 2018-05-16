@@ -1,0 +1,12 @@
+.mayus{
+    text-transform: uppercase;
+}
+
+.justificar{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.centrar{
+    text-align: center;
+}
