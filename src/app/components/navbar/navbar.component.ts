@@ -14,16 +14,10 @@ export class NavbarComponent implements OnInit {
   public id: string;
 
   constructor(
-    public authService : AuthService,
-
-  constructor(
-    public authService: AuthService,
+    public authService : AuthService
   ) { }
 
   ngOnInit() {
-    this.authService.getAuth().subscribe(autho=>{
-      if(autho){
-        this.isLogin=true;
     this.authService.getAuth().subscribe(autho => {
       if (autho) {
         this.isLogin = true;
@@ -37,7 +31,6 @@ export class NavbarComponent implements OnInit {
       }
 
     })
-    });
   }
   onClickLogout() {
     this.authService.logout();

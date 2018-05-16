@@ -43,10 +43,10 @@ export class AuthService {
   logout() {
     return this.afAuth.auth.signOut();
   }
-<<<<<<< HEAD
+
   loginGoogle(){
     return this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider());
-=======
+  }
 
     get authenticated(): boolean {
         return this.authState !== null;
@@ -54,6 +54,5 @@ export class AuthService {
 
   currentUserId(): string {
       return this.authenticated ? this.authState.uid : '';
->>>>>>> master
   }
 }
