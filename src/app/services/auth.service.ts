@@ -44,6 +44,10 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
+  loginGoogle(){
+    return this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider());
+  }
+
     get authenticated(): boolean {
         return this.authState !== null;
     }
