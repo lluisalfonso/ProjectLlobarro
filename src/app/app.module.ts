@@ -35,6 +35,7 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
 import {AuthGuard} from './guards/auth.guard';
+import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 
 const routes: Routes = [
     { path: '', component: HomepageComponent },
@@ -56,7 +57,8 @@ const routes: Routes = [
     LoginpageComponent,
     NotfoundpageComponent,
     PrivatepageComponent,
-    RegisterpageComponent
+    RegisterpageComponent,
+    UploadFormComponent
   ],
   imports: [
     BrowserModule,
