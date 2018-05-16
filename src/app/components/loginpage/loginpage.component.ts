@@ -9,34 +9,33 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginpageComponent implements OnInit {
 
-  public email : string;
-  public password : string;
+  public email: string;
+  public password: string;
 
   constructor(
-    private authService : AuthService,
-    private router : Router,
+    private authService: AuthService,
+    private router: Router,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
   }
 
-  onSubmitLogin(){
-    this.authService.loginEmail(this.email,this.password)
-    .then( (res)=>{
+  onSubmitLogin() {
+    this.authService.loginEmail(this.email, this.password)
+    .then( (res) => {
       this.router.navigate(['/private']);
-    }).catch((err)=>{
+    }).catch((err) => {
       console.log(err);
       this.toastr.error('Valors incorrectes!', 'Login Incorrecte!');
       this.router.navigate(['/login']);
     });
-
   }
-  ngOnclickGoogle(){
+  ngOnclickGoogle() {
     this.authService.loginGoogle()
-    .then((res)=>{
+    .then((res) => {
       this.router.navigate(['/private']);
-    }).catch((err)=>{
+    }).catch((err) => {
       this.toastr.error('Login Incorrecte', 'Login Incorrecte!');
       this.router.navigate(['/login']);
     })
