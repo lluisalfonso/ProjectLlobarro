@@ -1,57 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage,AngularFireUploadTask} from 'angularfire2/storage';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent implements OnInit {
-  //MAIN TASK 
+export class FileUploadComponent {
+
+  // Main task 
   task: AngularFireUploadTask;
 
-  //Progress monitoring
+  // Progress monitoring
+  percentage: Observable<number>;
 
-  percentage : Observable<number>;
   snapshot: Observable<any>;
 
-  downloadURL : Observable<string>;
+  // Download URL
+  downloadURL: Observable<string>;
 
-  isHovering : boolean;
+  // State for dropzone CSS toggling
+  isHovering: boolean;
+
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+
   
-
-  constructor(private storage : AngularFireStorage) {}
-
-  toggleHover(event: boolean){
-      this.isHovering = event;
+  toggleHover(event: boolean) {
+    this.isHovering = event;
   }
 
 
-  startUpload(event : FileList)  {
+  startUpload(event: FileList) {
+    // The File object
     const file = event.item(0)
 
-    if(file.type.split('/')[0]!== 'image'){
-      console.error('unsupported file type :(')
+    // Client-side validation example
+    if (file.type.split('/')[0] !== 'image') { 
+      console.error('unsupported file type :( ')
       return;
     }
 
-    const path = 'test/${new Date().getTime()}_${file.name}';
+    // The storage path
+    const path = `test/${new Date().getTime()}_${file.name}`;
 
-    const customMetadata = {app: 'My anfularFire-powered PWA'};
+    // Totally optional metadata
+    const customMetadata = { app: 'My AngularFire-powered PWA!' };
 
-    this.task = this.storage.upload(path,file,{customMetadata})
+    // The main task
+    this.task = this.storage.upload(path, file, { customMetadata })
 
+    // Progress monitoring
     this.percentage = this.task.percentageChanges();
-    this.snapshot = this.task.snapshotChanges();
+    this.snapshot   = this.task.snapshotChanges()
 
-
-    this.downloadURL =  this.task.downloadURL();
+    // The file's download URL
+    this.downloadURL = this.task.downloadURL(); 
   }
-  isActive(snapshot){
-    return snapshot.state == 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
-  }  
-  ngOnInit() {
+
+  // Determines if the upload task is active
+  isActive(snapshot) {
+    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes
   }
 
 }
