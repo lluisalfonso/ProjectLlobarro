@@ -26,3 +26,12 @@
         </label>
       </div>
 </div>
+
+<div>
+  <div *ngIf="downloadURL">
+    <h3>Results!</h3>
+    <img [src]="url"><br>
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div> 
+
+</div>

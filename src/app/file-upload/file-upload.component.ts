@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-file-upload',
@@ -37,16 +38,21 @@ export class FileUploadComponent {
     const file = event.item(0)
 
     // Client-side validation example
-    if (file.type.split('/')[0] !== 'image') { 
-      console.error('unsupported file type :( ')
-      return;
+    console.log(file.type.split('/')[0]);
+    
+    
+    // The storage path
+    //var path = `/${new Date().getTime()}_${file.name}`;
+
+    if(file.type.split('/')[0]=='image'){
+       var path = `images/${new Date().getTime()}_${file.name}`;
+    }
+    if(file.type.split('/')[0]=='application'){
+      var path = `fileUploads/${new Date().getTime()}_${file.name}`;
     }
 
-    // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
-
     // Totally optional metadata
-    const customMetadata = { app: 'My AngularFire-powered PWA!' };
+    const customMetadata = { app: 'File from '+User.name };
 
     // The main task
     this.task = this.storage.upload(path, file, { customMetadata })
