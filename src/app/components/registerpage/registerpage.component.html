@@ -6,39 +6,45 @@
                 <form (submit)="onSubmitAddUser()">
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" name="email" id="email" [(ngModel)]="email" class="form-control">
+                        <input type="email" name="email" id="email" [(ngModel)]="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password *</label>
-                        <input type="password" name="password" id="password" [(ngModel)]="password" class="form-control">
+                        <input type="password" name="password" id="password" [(ngModel)]="password" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="nom">Nom *</label>
-                        <input type="text" name="nom" id="nom" [(ngModel)]="nom" class="form-control">
+                        <input type="text" name="nom" id="nom" [(ngModel)]="nom" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="cognoms">Cognoms *</label>
-                        <input type="text" name="cognoms" id="cognoms" [(ngModel)]="cognoms" class="form-control">
+                        <input type="text" name="cognoms" id="cognoms" [(ngModel)]="cognoms" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Nom Usuari *</label>
-                        <input type="text" name="usuari" id="usuari" [(ngModel)]="usuari" class="form-control">
+                        <input type="text" name="usuari" id="usuari" [(ngModel)]="usuari" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Data de naixement *</label>
-                        <input type="text" name="naixement" id="naixement" [(ngModel)]="naixement" class="form-control">
+                        <input type="text" name="naixement" id="naixement" [(ngModel)]="naixement" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="pais">Pais *</label>
+                        <label for="pais">Pais</label>
                         <input type="text" name="pais" id="pais" [(ngModel)]="pais" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="telefon">Telefon *</label>
+                        <label for="telefon">Telefon</label>
                         <input type="number" name="telefon" id="telefon" [(ngModel)]="telefon" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="codiPostal">Codi Postal *</label>
+                        <label for="codiPostal">Codi Postal</label>
                         <input type="number" name="codiPostal" id="codiPostal" [(ngModel)]="codiPostal" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        
+                        <label for="terms"><input id="terms" type="checkbox" required>
+                            Accepto els <a class="underline" href="/termes-i-condicions">termes i condicions</a>
+                        </label>
                     </div>
                     <input type="submit" value="REGISTRAR" class="btn btn-primary btn-block btn-lg">
                 </form>

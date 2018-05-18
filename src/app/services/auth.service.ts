@@ -44,7 +44,7 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
-  loginGoogle(){
+  loginGoogle() {
     return this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider());
   }
 
@@ -54,5 +54,14 @@ export class AuthService {
 
   currentUserId(): string {
       return this.authenticated ? this.authState.uid : '';
+  }
+
+  verifyemail(){
+    firebase.auth().currentUser.sendEmailVerification().then(function() {
+        console.log("Email enviat");
+       }, function(error) {
+        console.error(error);
+       });    
+
   }
 }

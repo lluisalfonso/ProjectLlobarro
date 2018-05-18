@@ -31,6 +31,7 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.component';
 import { PrivatepageComponent } from './components/privatepage/privatepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
+import { TermespageComponent } from './components/termespage/termespage.component';
 
 // services
 import { UserService } from './services/user.service';
@@ -40,14 +41,14 @@ import {AuthGuard} from './guards/auth.guard';
 import { DropZoneDirective } from './drop-zone.directive';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 
+
 const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
     { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
     { path: '**', component: NotfoundpageComponent },
-    { path: 'drop', component: FileUploadComponent}
-
+    { path: 'termes-i-condicions', component: TermespageComponent },
 ];
 
 @NgModule({
@@ -63,7 +64,9 @@ const routes: Routes = [
     PrivatepageComponent,
     RegisterpageComponent,
     DropZoneDirective,
-    FileUploadComponent
+    FileUploadComponent,
+    TermespageComponent
+
   ],
   imports: [
     BrowserModule,
