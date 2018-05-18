@@ -43,7 +43,7 @@ export class RegisterpageComponent implements OnInit {
         this.id = this.authService.currentUserId();
         this.userService.insertUser(this.id, this.nom, this.cognoms, this.usuari, this.naixement, this.pais, this.telefon, this.codiPostal);
         this.authService.verifyemail()
-        this.toastr.success('Operació realitzada correctament', 'Registre Usuari');
+        this.toastr.success("S'ha enviat un correu de verificacio", 'Registre Usuari');
         console.log(res);
         }).catch((err) => {
             this.toastr.error('Operació no realitzada', 'Registre Usuari');
