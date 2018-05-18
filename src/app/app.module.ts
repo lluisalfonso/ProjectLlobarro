@@ -18,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {environment} from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule} from 'angularfire2/firestore'
+import { AngularFireStorageModule, AngularFireStorage} from 'angularfire2/storage';
 
 // components
 import { UsersComponent } from './components/users/users.component';
@@ -36,15 +38,17 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
 import {AuthGuard} from './guards/auth.guard';
+import { DropZoneDirective } from './drop-zone.directive';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
-    { path: 'private', component: PrivatepageComponent , canActivate : [AuthGuard]},
+    { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
+    { path: '**', component: NotfoundpageComponent },
     { path: 'termes-i-condicions', component: TermespageComponent },
-    { path: '**', component: NotfoundpageComponent }
 ];
 
 @NgModule({
@@ -59,7 +63,10 @@ const routes: Routes = [
     NotfoundpageComponent,
     PrivatepageComponent,
     RegisterpageComponent,
+    DropZoneDirective,
+    FileUploadComponent,
     TermespageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
       UserService,
