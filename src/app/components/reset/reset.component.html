@@ -1,0 +1,16 @@
+<div class="row mt-3">
+  <div class="col-md-6 mx-auto">
+      <div class="card">
+          <div class="card-body">
+              <h1>Recuperar Contrasenya</h1>
+              <form (submit)="resetPass()">
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" name="email" [(ngModel)]="email" id="email" class="form-control">
+                  </div>
+                  <input type="button" (click)="resetPassword()" value="Recuperar Contrasenya" class="btn btn-warning btn-block btn-lg">
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

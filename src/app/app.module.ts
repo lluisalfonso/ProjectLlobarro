@@ -30,6 +30,7 @@ import { NotfoundpageComponent } from './components/notfoundpage/notfoundpage.co
 import { PrivatepageComponent } from './components/privatepage/privatepage.component';
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
 import { TermespageComponent } from './components/termespage/termespage.component';
+import { Reset } from '../app/components/reset/reset.component';
 
 // services
 import { UserService } from './services/user.service';
@@ -44,6 +45,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterpageComponent },
     { path: 'private', component: PrivatepageComponent , canActivate : [AuthGuard]},
     { path: 'termes-i-condicions', component: TermespageComponent },
+    { path: 'reset',component: Reset},
     { path: '**', component: NotfoundpageComponent }
 ];
 
@@ -59,6 +61,7 @@ const routes: Routes = [
     NotfoundpageComponent,
     PrivatepageComponent,
     RegisterpageComponent,
+    Reset,
     TermespageComponent
   ],
   imports: [

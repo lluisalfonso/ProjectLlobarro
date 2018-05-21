@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,14 @@ export class AuthService {
     authState: any = null;
 
   constructor(
-      public afAuth: AngularFireAuth
+      public afAuth: AngularFireAuth,
+      public toastr: ToastrService
+
   ) {
       this.afAuth.authState.subscribe((auth) => {
           this.authState = auth;
       });
+      
   }
 
   registerUser(email: string, pass: string) {
@@ -62,6 +67,13 @@ export class AuthService {
        }, function(error) {
         console.error(error);
        });    
-
+  }
+  resetpassword(email){
+    firebase.auth().sendPasswordResetEmail(email).then(function() {
+    }).catch(function(error) {
+        console.log(error);
+      });
+   
+      
   }
 }

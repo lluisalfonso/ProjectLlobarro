@@ -42,4 +42,8 @@ export class LoginpageComponent implements OnInit {
 
   }
 
+  ngOnclickReset(){
+    this.router.navigate(['/reset']);
+  }
+
 }
