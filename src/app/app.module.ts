@@ -18,6 +18,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {environment} from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule} from 'angularfire2/firestore';
 
 // components
 import { UsersComponent } from './components/users/users.component';
@@ -66,7 +67,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase,'angularfs'),
+    AngularFirestoreModule,
     AngularFireDatabaseModule,
     FormsModule,
     BrowserAnimationsModule,
