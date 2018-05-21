@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body">
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+      <input
+          type="hidden"
+          name="$key"
+          #$key="ngModel"
+          [(ngModel)]="postService.selectedPost.$key"
+      >
+
+      <div class="form-group">
+        <label for="titol">Titol</label>
+        <input
+          type="text"
+          class="form-control"
+          name="titol"
+          #titol="ngModel"
+          id="titol"
+          [(ngModel)]="postService.selectedPost.titol"
+        >
+      </div>
+      <div class="form-group">
+        <label for="cos">Cos</label>
+        <input
+          type="textarea"
+          class="form-control"
+          name="cos"
+          #cos="ngModel"
+          id="cos"
+          [(ngModel)]="postService.selectedPost.cos"
+        >
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block btn-lg" type="submit">
+          <i class="fas fa-plus-circle"></i> Crear Post
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
