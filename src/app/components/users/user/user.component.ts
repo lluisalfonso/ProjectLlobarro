@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     public telefon: number;
     public codiPostal: number;
 
-  constructor(private userService: UserService,
+  constructor(public userService: UserService,
               private toastr: ToastrService
   ) { }
 
@@ -48,7 +48,6 @@ export class UserComponent implements OnInit {
         if (productForm != null) {
             productForm.reset();
             this.userService.selectedUser = new User();
-
         }
     }
 

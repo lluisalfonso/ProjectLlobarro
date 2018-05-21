@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -34,8 +35,12 @@ import { TermespageComponent } from './components/termespage/termespage.componen
 // services
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { PostService } from './services/post.service';
 
 import {AuthGuard} from './guards/auth.guard';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/posts/post/post.component';
+import { PostListComponent } from './components/posts/post-list/post-list.component';
 
 
 const routes: Routes = [
@@ -59,7 +64,10 @@ const routes: Routes = [
     NotfoundpageComponent,
     PrivatepageComponent,
     RegisterpageComponent,
-    TermespageComponent
+    TermespageComponent,
+    PostsComponent,
+    PostComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +82,7 @@ const routes: Routes = [
   providers: [
       UserService,
       AuthService,
+      PostService,
       AuthGuard
   ],
   bootstrap: [AppComponent]

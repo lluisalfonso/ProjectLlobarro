@@ -14,6 +14,7 @@ export class UserService {
     getUsers() {
         return this.userList = this.firebase.list('users');
     }
+
     insertUser(id: string, nom: string, cognoms: string, usuari: string, naixement: string, pais?: string,
                telefon?: number, codiPostal?: number) {
         if ((typeof pais === 'undefined') && (typeof telefon === 'undefined') && (typeof codiPostal === 'undefined')) {
