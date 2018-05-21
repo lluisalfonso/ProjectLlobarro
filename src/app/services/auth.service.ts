@@ -55,4 +55,13 @@ export class AuthService {
   currentUserId(): string {
       return this.authenticated ? this.authState.uid : '';
   }
+
+  verifyemail(){
+    firebase.auth().currentUser.sendEmailVerification().then(function() {
+        console.log("Email enviat");
+       }, function(error) {
+        console.error(error);
+       });    
+
+  }
 }
