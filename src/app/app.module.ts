@@ -19,6 +19,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {environment} from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule} from 'angularfire2/firestore';
+import * as firebase from 'firebase';
+
+
 
 // components
 import { UsersComponent } from './components/users/users.component';
@@ -32,11 +35,17 @@ import { PrivatepageComponent } from './components/privatepage/privatepage.compo
 import { RegisterpageComponent } from './components/registerpage/registerpage.component';
 import { TermespageComponent } from './components/termespage/termespage.component';
 import { Reset } from '../app/components/reset/reset.component';
+import { ControlpanelComponent } from './components/controlpanel/controlpanel.component';
+
+import { ItemsComponent } from './components/items/items.component';
+
 
 // services
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { ItemService } from './services/item.service';
 
+//Guards
 import {AuthGuard} from './guards/auth.guard';
 
 
@@ -47,8 +56,11 @@ const routes: Routes = [
     { path: 'private', component: PrivatepageComponent , canActivate : [AuthGuard]},
     { path: 'termes-i-condicions', component: TermespageComponent },
     { path: 'reset',component: Reset},
-    { path: '**', component: NotfoundpageComponent }
+    { path: '**', component: NotfoundpageComponent },
+    { path: 'userpanel',component: ControlpanelComponent,canActivate : [AuthGuard]}
 ];
+firebase.initializeApp(environment.firebase);
+
 
 @NgModule({
   declarations: [
@@ -63,7 +75,10 @@ const routes: Routes = [
     PrivatepageComponent,
     RegisterpageComponent,
     Reset,
-    TermespageComponent
+    TermespageComponent,
+    ControlpanelComponent,
+    ItemsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -79,7 +94,8 @@ const routes: Routes = [
   providers: [
       UserService,
       AuthService,
-      AuthGuard
+      AuthGuard,
+      ItemService
   ],
   bootstrap: [AppComponent]
 })
