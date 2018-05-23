@@ -35,6 +35,7 @@ import { RegisterpageComponent } from './components/registerpage/registerpage.co
 import { TermespageComponent } from './components/termespage/termespage.component';
 import { Reset } from '../app/components/reset/reset.component';
 
+
 // services
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -46,6 +47,7 @@ import { PostComponent } from './components/posts/post/post.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
 import { DropZoneDirective } from './drop-zone.directive';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { PanelusuariComponent } from './components/panelusuari/panelusuari.component';
 
 
 const routes: Routes = [
@@ -53,10 +55,12 @@ const routes: Routes = [
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
     { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
-    { path: '**', component: NotfoundpageComponent },
     { path: 'termes-i-condicions', component: TermespageComponent },
     { path: 'reset',component: Reset},
-    { path: '**', component: NotfoundpageComponent }
+    { path: 'userpanel', component: PanelusuariComponent },
+    { path: '**', component: NotfoundpageComponent } //Sempre la ultima, si no peta 
+
+    
 
 ];
 
@@ -76,9 +80,10 @@ const routes: Routes = [
     TermespageComponent,
     PostsComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
     DropZoneDirective,
-    FileUploadComponent
+    FileUploadComponent,
+    PanelusuariComponent
 
   ],
   imports: [
