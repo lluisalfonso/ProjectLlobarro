@@ -53,7 +53,6 @@ const routes: Routes = [
     { path: 'login', component: LoginpageComponent },
     { path: 'register', component: RegisterpageComponent },
     { path: 'private', component: PrivatepageComponent ,canActivate : [AuthGuard]},
-    { path: '**', component: NotfoundpageComponent },
     { path: 'termes-i-condicions', component: TermespageComponent },
     { path: 'reset',component: Reset},
     { path: '**', component: NotfoundpageComponent }
@@ -76,7 +75,7 @@ const routes: Routes = [
     TermespageComponent,
     PostsComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
     DropZoneDirective,
     FileUploadComponent
 

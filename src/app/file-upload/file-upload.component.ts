@@ -62,7 +62,7 @@ export class FileUploadComponent {
     this.snapshot   = this.task.snapshotChanges()
 
     // The file's download URL
-    this.downloadURL = this.task.downloadURL(); 
+    //this.downloadURL = this.task.downloadURL(); 
   }
 
   // Determines if the upload task is active
